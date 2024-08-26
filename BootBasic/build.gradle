@@ -1,0 +1,29 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.18' //부트 버전
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.simple'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(11) //자바 컴파일 버전
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web' //스프링 web모듈
+	developmentOnly 'org.springframework.boot:spring-boot-devtools' // 스프링 개발에 편리한 기능을 담고 있는 모듈
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' //test
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
